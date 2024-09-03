@@ -1,0 +1,22 @@
+
+
+.createForm {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: solid 2px green;
+}
+.createForm label{
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+.createForm input{
+    height: 25px;
+    border: 2px solid black;
+}
+.createForm button {
+    margin: 0 auto;
+    font-size: 15px;
+    width: 60%;
+    padding: 15px;
+}

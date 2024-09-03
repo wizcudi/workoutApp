@@ -1,0 +1,16 @@
+.hero {
+    padding: 20px;
+    
+    border: solid 2px blue;
+}
+.hero h1, p{
+
+    text-align: center;
+    /* border: solid 2px black; */
+}
+.hero h1 {
+    font-size: 40px;
+}
+.hero p {
+    font-size: 25px;
+}
