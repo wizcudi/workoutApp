@@ -7,12 +7,12 @@ export default function CreatedWorkout({todaysRegimen, regimenName, setRegimenNa
     
 
     return (
-        <div>
+        <div className='create-workout'>
             {todaysRegimen.map(workout => (
                 <ul key={workout.id}>
                     <li>{workout.workoutName}</li>
-                    <li>{workout.workoutWeight}</li>
-                    <li>{workout.workoutRep}</li>
+                    <li>{workout.workoutWeight} LBs</li>
+                    <li>{workout.workoutRep} Reps</li>
                 </ul>                    
             ))}
 
