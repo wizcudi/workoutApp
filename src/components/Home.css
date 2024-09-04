@@ -1,5 +1,6 @@
 .homebody {
-    max-width: 700px;
+    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
     border: solid 2px black;
 }

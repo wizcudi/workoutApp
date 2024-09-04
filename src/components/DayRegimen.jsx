@@ -1,20 +1,35 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
+import { useNavBarContext } from '../context/NavContext.jsx'
+import './DayRegimen.css'
 import DayForm from './DayForm.jsx';
 import CreatedWorkout from './CreatedWorkout.jsx';
 import SubmittedRegimens from './SubmittedRegimens.jsx'
-// import Button from './Button.jsx';
-import { Clipboard, List } from 'lucide-react';
-import './DayRegimen.css'
+
 
 
 export default function DayRegimen() {
-    const [todaysRegimen, setTodaysRegimen] = useState([])
+
+    const {
+        setShowIcons,
+        todaysRegimen,
+        setTodaysRegimen,
+        showCreatedWorkout,
+        setShowCreatedWorkout,
+        showSubmittedRegimens,
+        setShowSubmittedRegimens
+    } = useNavBarContext();
+
     const [regimenName, setRegimenName] = useState('')
     const [confirmedRegimen, setConfirmedRegimen] = useState({})
+    
+    // Set the icons to show in the Navbar when DayRegimen is mounted
+    useEffect(() => {
+        setShowIcons(true);  // Show icons when this component is mounted
 
-    const [showCreatedWorkout, setShowCreatedWorkout] = useState(false);
-    const [showSubmittedRegimens, setShowSubmittedRegimens] = useState(false);
-   
+        return () => {
+            setShowIcons(false);  // Hide icons when this component is unmounted
+        };
+    }, [setShowIcons]);
 
     // Function to add new workout
     const addWorkout = (currentWorkout) => {
@@ -39,30 +54,7 @@ export default function DayRegimen() {
 
     return (
         <div className="day-regimen">
-
             <DayForm onAddWorkout={addWorkout} />
-
-            <div className="icon-buttons">
-                <button 
-                    className="icon-button"
-                    onClick={() => setShowCreatedWorkout(!showCreatedWorkout)} 
-                >
-                    <Clipboard  />
-                    {todaysRegimen.length > 0 && (
-                        <span className="icon-badge">
-                            {todaysRegimen.length}
-                        </span>
-                    )}
-                </button>
-
-                <button 
-                    className="icon-button"
-                    onClick={() => setShowSubmittedRegimens(!showSubmittedRegimens)}
-                >
-                    <List />
-                </button>
-            </div>
-
 
             {showCreatedWorkout && (
                 <div className="popup-container">
@@ -74,22 +66,13 @@ export default function DayRegimen() {
                 />
                 </div>
             )}
-            {/* <CreatedWorkout 
-                todaysRegimen={todaysRegimen}
-                regimenName={regimenName}
-                setRegimenName={setRegimenName}
-                onSubmitRegimen={submitRegimen} 
-            /> */}
-
-
-
+            
             {showSubmittedRegimens && (
                 <div className="popup-container">
                     <SubmittedRegimens confirmedRegimen={confirmedRegimen} />
                 </div>
             )}
-            {/* <SubmittedRegimens confirmedRegimen={confirmedRegimen} /> */}
-
+            
         </div>
     )
 }

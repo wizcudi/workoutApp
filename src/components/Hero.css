@@ -1,13 +1,14 @@
 .hero {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 40px 20px;
 }
 .hero h1, p{
-
     text-align: center;
-    /* border: solid 2px black; */
 }
 .hero h1 {
-    font-size: 40px;
+    font-size: 45px;
 }
 .hero p {
     font-size: 25px;

@@ -16,7 +16,7 @@ li {
     padding: 20px;
 }
 .submitted-regimen-title {
-    font-size: 40px;
+    font-size: 30px;
     margin: 0;
     border-bottom: solid 2px black;
 }
@@ -27,7 +27,7 @@ li {
     /* border: solid 2px blue; */
 }
 .regimen-entrie-title {
-    font-size: 30px;
+    font-size: 20px;
     text-transform: capitalize;
     margin: 0;
 }

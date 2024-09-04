@@ -4,26 +4,29 @@
 }
 
 .icon-buttons {
-    position: absolute;
-    top: 20px;
-    right: 25px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .icon-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    color: #333;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.436);
     transition: all 0.3s ease;
     padding: 10px;
+
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    color: black;
+    cursor: pointer;
+
+    border: none;
+    
 }
 
 .icon-button:hover {
@@ -33,7 +36,7 @@
 
 .popup-container {
     position: fixed;
-    top: 80px;
+    top: 90px;
     right: 20px;
     background-color: white;
     padding: 20px;
