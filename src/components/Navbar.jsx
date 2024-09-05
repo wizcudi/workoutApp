@@ -39,9 +39,6 @@ export default function Navbar() {
                         <List />
                     </button>
                 </div>
-
-
-
             )}
         </div>
     )

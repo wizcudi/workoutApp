@@ -19,8 +19,10 @@ export default function DayRegimen() {
         setShowSubmittedRegimens
     } = useNavBarContext();
 
+
     const [regimenName, setRegimenName] = useState('')
     const [confirmedRegimen, setConfirmedRegimen] = useState({})
+
     
     // Set the icons to show in the Navbar when DayRegimen is mounted
     useEffect(() => {
@@ -29,7 +31,7 @@ export default function DayRegimen() {
         return () => {
             setShowIcons(false);  // Hide icons when this component is unmounted
         };
-    }, [setShowIcons]);
+    }, []);
 
     // Function to add new workout
     const addWorkout = (currentWorkout) => {
