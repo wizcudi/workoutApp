@@ -3,6 +3,7 @@ import './DayForm.css'
 import Button from './Button.jsx'
 
 export default function DayForm({onAddWorkout}) {
+   
 
     const [currentWorkout, setCurrentWorkout] = useState({
         workoutName: '',
@@ -18,6 +19,8 @@ export default function DayForm({onAddWorkout}) {
             [name]: value
         }))
     }
+
+   
 
     const submitWorkout = (e) => {
         e.preventDefault()

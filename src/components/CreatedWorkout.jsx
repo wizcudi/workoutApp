@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './CreatedWorkout.css'
 import Button from './Button.jsx'
 
 export default function CreatedWorkout({todaysRegimen, regimenName, setRegimenName, onSubmitRegimen}) {
-
-    
 
     return (
         <div className='create-workout'>

@@ -1,7 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './SubmittedRegimens.css'
 
-export default function SubmittedRegimens ({confirmedRegimen}) {
+export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
+    const [isSaving, setIsSaving] = useState(false);
+    const [saveStatus, setSaveStatus] = useState('')
+
+
+    const handleSaveWorkoutToDB = async () => {
+        if (isSaving) return; // Prevent multiple calls while saving
+        setIsSaving(true);
+        // setError(null);
+        setSaveStatus('');
+
+        try {
+            const savedCount = await onSaveWorkout();
+            setSaveStatus(`Successfully saved ${savedCount} workout${savedCount !== 1 ? 's' : ''}!`);
+        } catch (e) {
+            console.error("Error saving workout: ", e);
+            setSaveStatus("Failed to save workout. Please try again.");
+        } finally {
+            setIsSaving(false);
+        }
+    };
     return (
         <div className='submitted-regimen'>
             <h2 className='submitted-regimen-title'>Regimen List</h2>
@@ -17,6 +37,17 @@ export default function SubmittedRegimens ({confirmedRegimen}) {
                     ))}
                 </div>
             ))}
+
+            {/* Add btn to save regimen to a DB */}
+            <button onClick={handleSaveWorkoutToDB} disabled={isSaving}>
+                {isSaving ? 'Saving...' : 'Save Workout'}
+            </button>
+            {saveStatus && (
+                <p style={{ color: saveStatus.includes('Successfully') ? 'green' : 'red' }}>
+                    {saveStatus}
+                </p>
+            )}
+            {/* {error && <p style={{color: 'red'}}>{error}</p>} */}
         </div>
     )
 }

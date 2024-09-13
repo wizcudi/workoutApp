@@ -1,6 +1,9 @@
 .day-regimen {
     position: relative;
     padding: 40px 20px;
+    width: 100%;
+    max-width: 500px;
+    /* border: solid 2px green; */
 }
 
 .icon-buttons {

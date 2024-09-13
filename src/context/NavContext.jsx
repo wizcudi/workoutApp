@@ -1,15 +1,26 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
 
-// Create a context
+
 const NavBarContext = createContext();
 
-// Create a provider component
 export const NavBarProvider = ({ children }) => {
     const [showIcons, setShowIcons] = useState(false);
     const [todaysRegimen, setTodaysRegimen] = useState([]);
     const [showCreatedWorkout, setShowCreatedWorkout] = useState(false);
     const [showSubmittedRegimens, setShowSubmittedRegimens] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [isOnDashboard, setIsOnDashboard] = useState(false)
+    // const [isOnViewWorkout, setIsOnViewWorkout] = useState(false)
 
+    const location = useLocation();
+
+    useEffect(() => {
+        // Update showIcons based on the current route
+        setShowIcons(location.pathname === '/create-workout');
+        setIsOnDashboard(location.pathname === '/dashboard');
+    }, [location]);
 
     return (
         <NavBarContext.Provider value={{ 
@@ -20,13 +31,19 @@ export const NavBarProvider = ({ children }) => {
             showCreatedWorkout,
             setShowCreatedWorkout,
             showSubmittedRegimens,
-            setShowSubmittedRegimens 
-
+            setShowSubmittedRegimens,
+            error, 
+            setError,
+            success, 
+            setSuccess,
+            isOnDashboard, 
+            setIsOnDashboard,
+            // isOnViewWorkout, 
+            // setIsOnViewWorkout
         }}>
             {children}
         </NavBarContext.Provider>
     );
 };
 
-// Custom hook to use the NavBarContext
 export const useNavBarContext = () => useContext(NavBarContext);

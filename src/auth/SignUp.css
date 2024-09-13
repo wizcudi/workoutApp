@@ -1,0 +1,17 @@
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 30px;
+    row-gap: 20px;
+
+}
+.signUpForm h2 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.signUpForm input {
+    height: 40px;
+    padding: 0 10px;
+}

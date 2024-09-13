@@ -1,0 +1,17 @@
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 30px;
+    row-gap: 20px;
+
+}
+.signInForm h2 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.signInForm input {
+    height: 40px;
+    padding: 0 10px;
+}
