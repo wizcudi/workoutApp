@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavBarContext } from '../context/NavContext.jsx';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'
 
 export default function Dashboard() {
     const { setIsOnDashboard } = useNavBarContext();
@@ -14,14 +13,14 @@ export default function Dashboard() {
     
 
     return (
-        <div className='dashboard'>
+        <div className='max-w-xl w-full mx-auto'>
 
-            <div className='dash-body'>
+            <div className='flex flex-col items-center justify-evenly gap-5 min-h-[300px]'>
                 <h1>Welcome Back</h1>
-                <Link to="/view-workout" className='dash-offers'>
+                <Link to="/view-workout" className='border-2 border-black rounded-xl flex items-center justify-center w-4/5 h-24 cursor-pointer'>
                     <h2>View Workouts</h2>
                 </Link>
-                <Link to="/create-workout" className='dash-offers'>
+                <Link to="/create-workout" className='border-2 border-black rounded-xl flex items-center justify-center w-4/5 h-24 cursor-pointer'>
                     <h2>Create Workout</h2>
                 </Link>
             </div>

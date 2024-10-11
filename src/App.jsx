@@ -1,4 +1,4 @@
-import './App.css'
+
 import { NavBarProvider } from './context/NavContext.jsx'
 import { AuthProvider } from './context/AuthStateManager.jsx'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
@@ -29,9 +29,12 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        
         <NavBarProvider>
-          <div className='main'>
+
+          <div className='flex flex-col items-center justify-between min-h-screen font-rubik'>
             <Navbar />
+            
             <Routes>
               <Route path="/" element={<Home />} />
               <Route 
@@ -59,9 +62,12 @@ function App() {
                 } 
               />
             </Routes>
+
             <Footer />
           </div>
+
         </NavBarProvider>
+
       </AuthProvider>
     </Router>
   )

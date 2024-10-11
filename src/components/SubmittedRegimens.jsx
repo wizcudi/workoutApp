@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import './SubmittedRegimens.css'
 
 export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
     const [isSaving, setIsSaving] = useState(false);
@@ -22,14 +21,15 @@ export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
             setIsSaving(false);
         }
     };
+
     return (
-        <div className='submitted-regimen'>
-            <h2 className='submitted-regimen-title'>Regimen List</h2>
+        <div className="flex flex-col gap-8 p-5">
+            <h2 className="text-2xl border-b-2 border-black">Regimen List</h2>
             {Object.entries(confirmedRegimen).map(([name,workouts]) => (
-                <div className='regimen-entries' key={name}>
-                    <h2 className='regimen-entrie-title'>{name}</h2>
+                <div key={name} className="flex flex-col gap-5">
+                    <h2 className="text-lg capitalize">{name}</h2>
                     {workouts.map(workout => (
-                        <ul className='regimen-entrie-title-ul' key={workout.id}>
+                        <ul key={workout.id} className="flex flex-col gap-2">
                             <li>{workout.workoutName}</li>
                             <li>{workout.workoutWeight}</li>
                             <li>{workout.workoutRep}</li>
@@ -39,15 +39,14 @@ export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
             ))}
 
             {/* Add btn to save regimen to a DB */}
-            <button onClick={handleSaveWorkoutToDB} disabled={isSaving}>
+            <button onClick={handleSaveWorkoutToDB} className="bg-blue-600 text-white p-3 rounded-lg" disabled={isSaving}>
                 {isSaving ? 'Saving...' : 'Save Workout'}
             </button>
             {saveStatus && (
-                <p style={{ color: saveStatus.includes('Successfully') ? 'green' : 'red' }}>
+                <p className={`mt-2 ${saveStatus.includes('Successfully') ? 'text-green-500' : 'text-red-500'}`}>
                     {saveStatus}
                 </p>
             )}
-            {/* {error && <p style={{color: 'red'}}>{error}</p>} */}
         </div>
-    )
+    );
 }

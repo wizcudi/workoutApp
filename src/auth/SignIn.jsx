@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword  } from 'firebase/auth';
 import { useAuthContext } from '../context/AuthStateManager.jsx'
-import './SignIn.css'
+
 import Button from '../components/Button.jsx'
-// import Dashboard from '../components/Dashboard.jsx';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -39,8 +38,8 @@ const SignIn = () => {
     }
 
     return (
-        <form className='signInForm' onSubmit={handleSignIn}>
-            <h2>
+        <form className="flex flex-col p-8 gap-5" onSubmit={handleSignIn}>
+            <h2 className="text-2xl text-center capitalize">
                 Sign In to your account
             </h2>
             <input
@@ -49,6 +48,7 @@ const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 required
+                className="h-10 px-3 border border-gray-300 rounded"
             />
             <input
                 type="password"
@@ -56,10 +56,11 @@ const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
+                className="h-10 px-3 border border-gray-300 rounded"
             />
             <Button type="submit">Sign In</Button>
-            {error && <p style={{color: 'red'}}>{error}</p>}
-            {success && <p style={{color: 'green'}}>Successfully signed in!</p>}
+            {error && <p className="text-red-500">{error}</p>}
+            {success && <p className="text-green-500">Successfully signed in!</p>}
         </form>
     )
 };

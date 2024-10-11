@@ -1,12 +1,14 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavBarContext } from '../context/NavContext.jsx'
-import './DayRegimen.css'
+
 import DayForm from './DayForm.jsx';
 import CreatedWorkout from './CreatedWorkout.jsx';
 import SubmittedRegimens from './SubmittedRegimens.jsx'
+
 import { db } from '../firebase';  // Import Firebase
-import { collection, addDoc } from 'firebase/firestore';  // Import Firestore functions
+import { doc, setDoc } from 'firebase/firestore';  // Import Firestore functions
 import { useAuthContext } from '../context/AuthStateManager.jsx'
+
 
 
 export default function DayRegimen() {
@@ -37,9 +39,14 @@ export default function DayRegimen() {
             throw new Error("User not authenticated");
         }
 
+        if (!username) {
+            throw new Error("Username not found");
+        }
+
         // Combine all workouts into a single object
         const combinedWorkouts = {
             email: user.email,
+            username: username,
             createdAt: new Date(),
 
             // CREATE A NAME FUNCTIONALITY FOR EACH SAVED REGIMEN
@@ -50,11 +57,11 @@ export default function DayRegimen() {
         };
     
         try {
-            // Save the combined workouts as a single document
-            // User's UID as the collection name
-            const docRef = await addDoc(collection(db, username), combinedWorkouts); 
-            // const docRef = await addDoc(collection(db, 'workouts'), combinedWorkouts);
-            console.log("Document written with ID: ", docRef.id);
+            // Use setDoc with username as document ID
+            const workoutRef = doc(db, 'workouts', username);
+            await setDoc(workoutRef, combinedWorkouts);
+            console.log("Document written for username: ", username);
+
 
             // Clear the form after successful save
             setConfirmedRegimen({});
@@ -86,12 +93,12 @@ export default function DayRegimen() {
     if (loading) return <div>Loading...</div>;  // Show loading if still waiting for auth
     
     return (
-        <div className="day-regimen">
+        <div className="relative p-10 w-full max-w-lg">
             <DayForm onAddWorkout={addWorkout} />
            
 
             {showCreatedWorkout && (
-                <div className="popup-container">
+                <div className="fixed top-20 right-5 bg-white p-5 rounded-lg shadow-lg max-w-sm max-h-[80vh] overflow-y-auto">
                     <CreatedWorkout 
                         todaysRegimen={todaysRegimen}
                         regimenName={regimenName}
@@ -102,7 +109,7 @@ export default function DayRegimen() {
             )}
             
             {showSubmittedRegimens && (
-                <div className="popup-container">
+                <div className="fixed top-20 right-5 bg-white p-5 rounded-lg shadow-lg max-w-sm max-h-[80vh] overflow-y-auto">
                     <SubmittedRegimens 
                         confirmedRegimen={confirmedRegimen} 
                         onSaveWorkout={saveWorkoutToFirebase}

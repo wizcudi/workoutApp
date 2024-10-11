@@ -1,24 +1,10 @@
 import React, {useState} from 'react'
-import './Navbar.css'
-import { useNavBarContext } from '../context/NavContext.jsx'
-import { Clipboard, List } from 'lucide-react';
 import SignOut from '../auth/SignOut.jsx'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-
+import { faBars, faXmark  } from '@fortawesome/free-solid-svg-icons';
 import { Link  } from 'react-router-dom';
 
 export default function Navbar() {
-    const {
-        showIcons,
-        todaysRegimen,
-        showCreatedWorkout,
-        setShowCreatedWorkout,
-        showSubmittedRegimens,
-        setShowSubmittedRegimens,
-        isOnDashboard,
-    } = useNavBarContext();
 
     const [hamburgerClicked, setHamburgerClicked] = useState(false)
     
@@ -26,46 +12,40 @@ export default function Navbar() {
         setHamburgerClicked(!hamburgerClicked)
     }
 
-    
-
     return (
-        <div className='navbar'>
-            Navbar
+        <div className="flex items-center justify-between bg-stone-200 p-5 w-full border-b-2 border-black ">
 
-            <div className={`navbar-items ${hamburgerClicked ? 'show' : ''}`}>
-                <Link to="/dashboard">Dashboard</Link>
-                <Link to="/view-workout">View Workout</Link>
-                <Link to="/create-workout">Create Workout</Link>
+            <h1
+                className="text-xl font-bold"
+            >Fit Tracker</h1>
 
-                {showIcons && (
-                    <div className="icon-buttons">
-                        <button 
-                            className="icon-button"
-                            onClick={() => setShowCreatedWorkout(!showCreatedWorkout)}
-                        >
-                            <Clipboard />
-                            {todaysRegimen.length > 0 && (
-                                <span className="icon-badge">
-                                    {todaysRegimen.length}
-                                </span>
-                            )}
-                        </button>
+            <div 
+                className={
+                    `flex items-center justify-between gap-5 ${
+                        hamburgerClicked ? 
+                        'flex-col bg-stone-300 shadow-2xl py-20 fixed top-0 left-0 h-screen z-50 w-3/5' 
+                        : 
+                        'hidden md:flex'
+                    }`
+                }
 
-                        <button 
-                            className="icon-button"
-                            onClick={() => setShowSubmittedRegimens(!showSubmittedRegimens)}
-                        >
-                            <List />
-                        </button>
+                
+            >
+                {hamburgerClicked && (
+                    <div className="absolute top-5 right-5 cursor-pointer" onClick={toggleHamburgerMenu}>
+                        <FontAwesomeIcon icon={faXmark} />
                     </div>
                 )}
-
-                {isOnDashboard && <SignOut />}
+                <Link to="/dashboard" className='font-bold'>Dashboard</Link>
+                <Link to="/view-workout" className='font-bold'>View Workout</Link>
+                <Link to="/create-workout" className='font-bold'>Create Workout</Link>
+                <SignOut />
             </div>
 
-            <div onClick={toggleHamburgerMenu} className='hamburger'>
-                <FontAwesomeIcon className='faBar' icon={faBars} />
+            <div onClick={toggleHamburgerMenu} className="block md:hidden cursor-pointer">
+                <FontAwesomeIcon icon={faBars} />
             </div>
+            
         </div>
     )
 }

@@ -12,7 +12,6 @@ export const NavBarProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [isOnDashboard, setIsOnDashboard] = useState(false)
-    // const [isOnViewWorkout, setIsOnViewWorkout] = useState(false)
 
     const location = useLocation();
 
@@ -38,8 +37,6 @@ export const NavBarProvider = ({ children }) => {
             setSuccess,
             isOnDashboard, 
             setIsOnDashboard,
-            // isOnViewWorkout, 
-            // setIsOnViewWorkout
         }}>
             {children}
         </NavBarContext.Provider>

@@ -1,13 +1,12 @@
 import React from 'react'
-import './Hero.css'
 import Button from './Button.jsx'
 
 
 export default function Hero(props) {
     return (
-        <div className='hero'>
-            <h1>Workout Tracker</h1>
-            <p>
+        <div className="flex flex-col gap-8 p-10">
+            <h1 className="text-center text-5xl">Workout Tracker</h1>
+            <p className="text-center text-2xl">
                 No more notes app or pocket books.
                 Create your custom workout regimen 
                 and store it in the cloud.
