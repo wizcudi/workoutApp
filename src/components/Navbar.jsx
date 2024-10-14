@@ -39,7 +39,11 @@ export default function Navbar() {
                 <Link to="/dashboard" className='font-bold'>Dashboard</Link>
                 <Link to="/view-workout" className='font-bold'>View Workout</Link>
                 <Link to="/create-workout" className='font-bold'>Create Workout</Link>
+                
+                {/* Add sign in / sign out functionalitty  */}
                 <SignOut />
+
+
             </div>
 
             <div onClick={toggleHamburgerMenu} className="block md:hidden cursor-pointer">
