@@ -21,9 +21,9 @@ export default function Navbar() {
 
             <div 
                 className={
-                    `flex items-center justify-between gap-5 ${
+                    `flex items-center  gap-7 ${
                         hamburgerClicked ? 
-                        'flex-col bg-stone-300 shadow-2xl py-20 fixed top-0 left-0 h-screen z-50 w-3/5' 
+                        'flex-col justify-center gap-16 text-lg bg-stone-300 shadow-2xl fixed top-0 left-0 h-screen z-50 w-3/5' 
                         : 
                         'hidden md:flex'
                     }`
@@ -32,13 +32,35 @@ export default function Navbar() {
                 
             >
                 {hamburgerClicked && (
-                    <div className="absolute top-5 right-5 cursor-pointer" onClick={toggleHamburgerMenu}>
+                    <div 
+                        className="
+                            absolute 
+                            top-5 
+                            right-5 
+                            border-2 
+                            border-black
+                            rounded-full
+                            text-2xl
+
+                            w-10
+                            h-10
+                            flex
+                            justify-center
+                            items-center
+                            cursor-pointer
+
+                            hover:bg-blue-600
+                            hover:border-none
+                            hover:text-white
+                        " 
+                        onClick={toggleHamburgerMenu}
+                    >
                         <FontAwesomeIcon icon={faXmark} />
                     </div>
                 )}
-                <Link to="/dashboard" className='font-bold'>Dashboard</Link>
-                <Link to="/view-workout" className='font-bold'>View Workout</Link>
-                <Link to="/create-workout" className='font-bold'>Create Workout</Link>
+                <Link to="/dashboard" className='font-bold text-lg'>Dashboard</Link>
+                <Link to="/view-workout" className='font-bold text-lg'>View Workout</Link>
+                <Link to="/create-workout" className='font-bold text-lg'>Create Workout</Link>
                 
                 {/* Add sign in / sign out functionalitty  */}
                 <SignOut />
