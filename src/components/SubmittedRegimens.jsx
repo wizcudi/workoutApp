@@ -1,6 +1,14 @@
 import React, {useState} from 'react'
+import { useNavBarContext } from '../context/NavContext.jsx'
+import Button from './Button.jsx'
 
 export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
+
+    const {
+        showSubmittedRegimens,
+        setShowSubmittedRegimens,
+    } = useNavBarContext();
+
     const [isSaving, setIsSaving] = useState(false);
     const [saveStatus, setSaveStatus] = useState('')
 
@@ -23,7 +31,34 @@ export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
     };
 
     return (
-        <div className="flex flex-col gap-8 p-5">
+        <div className="
+            flex 
+            flex-col 
+            gap-8
+        ">
+
+            <button 
+                onClick={() => setShowSubmittedRegimens(!showSubmittedRegimens)}
+                className='
+                    border-2 
+                    border-black
+                    w-10
+                    h-10
+                    rounded
+                    flex
+                    text-2xl
+                    font-bold
+                    justify-center
+                    items-center
+                    cursor-pointer
+                    hover:bg-black
+                    hover:text-white
+                    shadow-lg
+                '
+            >
+                X
+            </button>
+
             <h2 className="text-2xl border-b-2 border-black">Regimen List</h2>
             {Object.entries(confirmedRegimen).map(([name,workouts]) => (
                 <div key={name} className="flex flex-col gap-5">
@@ -39,9 +74,11 @@ export default function SubmittedRegimens ({confirmedRegimen,onSaveWorkout}) {
             ))}
 
             {/* Add btn to save regimen to a DB */}
-            <button onClick={handleSaveWorkoutToDB} className="bg-blue-600 text-white p-3 rounded-lg" disabled={isSaving}>
+
+            <Button onClick={handleSaveWorkoutToDB} disabled={isSaving}>
                 {isSaving ? 'Saving...' : 'Save Workout'}
-            </button>
+            </Button>
+
             {saveStatus && (
                 <p className={`mt-2 ${saveStatus.includes('Successfully') ? 'text-green-500' : 'text-red-500'}`}>
                     {saveStatus}
