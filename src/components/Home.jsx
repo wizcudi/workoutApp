@@ -24,7 +24,7 @@ export default function Home() {
     }
 
     return (
-        <div className="max-w-lg w-full mx-auto border-2 border-black p-5">
+        <div className="max-w-lg w-full mx-auto p-5">
             {authMode === 'signIn' ? (
                 <SignIn />
             ) : authMode === 'signUp' ? (
