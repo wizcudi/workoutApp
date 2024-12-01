@@ -1,75 +1,81 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { WorkoutProvider } from './components/WorkoutContext';
 
-import { NavBarProvider } from './context/NavContext.jsx'
-import { AuthProvider } from './context/AuthStateManager.jsx'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
-import { useAuthContext } from './context/AuthStateManager.jsx'
-
-import Home from './components/Home.jsx'
-import Dashboard from './components/Dashboard.jsx'
-import ViewWorkout from './components/ViewWorkouts.jsx'
-import DayRegimen from './components/DayRegimen.jsx'
-import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
-
-function ProtectedRoute({ children }) {
-  const { user, loading } = useAuthContext();
-  
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-  
-  return children;
-}
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
+import Dashboard from './components/useraccount/Dashboard'
+import CreateRegimen from './components/useraccount/create/CreateRegimen';
+import WorkoutPrograms from './components/useraccount/view/WorkoutPrograms'
+import MealHistory from './components/useraccount/history/MealHistory'
+import CalorieTracker from './components/useraccount/tracker/CalorieTracker'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        
-        <NavBarProvider>
+    <BrowserRouter>
+    <WorkoutProvider>
+      <div className="
+        h-screen flex flex-col
+      ">
+    
+        <Navbar />
 
-          <div className='flex flex-col items-center justify-between min-h-screen font-rubik'>
-            <Navbar />
+        {/* Main content area */}
+        <div className="
+          grow flex
+          justify-center items-center px-5      
+        ">
+
+          <Routes>
+
+            <Route path="/" element={<Home/>} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/dashboard" 
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/create_regimen" 
+              element={
+                <ProtectedRoute>
+                  <CreateRegimen />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/workout_programs" 
+              element={
+                <ProtectedRoute>
+                  <WorkoutPrograms />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/meal_history" 
+              element={
+                <ProtectedRoute>
+                  <MealHistory />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/calorie_tracker" 
+              element={
+                <ProtectedRoute>
+                  <CalorieTracker />
+                </ProtectedRoute>
+              } 
+            />
             
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route 
-                path="/dashboard" 
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/view-workout" 
-                element={
-                  <ProtectedRoute>
-                    <ViewWorkout />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/create-workout" 
-                element={
-                  <ProtectedRoute>
-                    <DayRegimen />
-                  </ProtectedRoute>
-                } 
-              />
-            </Routes>
+          </Routes>
 
-            <Footer />
-          </div>
-
-        </NavBarProvider>
-
-      </AuthProvider>
-    </Router>
+        </div>
+            
+      </div>
+      </WorkoutProvider>
+    </BrowserRouter>
   )
 }
 
