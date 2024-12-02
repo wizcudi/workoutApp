@@ -50,7 +50,7 @@ export default function Home() {
 
                 <Link to="/signin">
                     <Button 
-                        btnText='Create an account'
+                        btnText='Welcome Back'
                         btnBorder='border-2 border-color-30'
                         hoverColor='hover:bg-color-60'
                         hoverText='hover:text-color-30'
