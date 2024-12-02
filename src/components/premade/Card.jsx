@@ -15,18 +15,11 @@ export default function Card({header, cardBG, img, to}) {
         <div 
             onClick={handleClick}
             className={`
-                flex
-                sm:flex-col
-                sm:justify-center
-                items-center
-                gap-4
-                p-4
-                cursor-pointer
-                shadow-md
-                sm:max-w-[48%]
-                sm:h-[175px]
-                w-full
-                rounded
+                flex sm:flex-col sm:justify-center
+                items-center gap-4 p-4
+                cursor-pointer shadow-md
+                sm:max-w-[48%] sm:h-[175px]
+                w-full rounded
                 ${cardBG}
             `}
         >
@@ -34,20 +27,12 @@ export default function Card({header, cardBG, img, to}) {
                 img &&<img 
                     src={img} 
                     alt={header}
-                    className="
-                        w-12 
-                        h-12
-                        
-                    " 
+                    className="w-12 h-12 " 
                 />
             }
-            <h2
-                className='
-                    text-zinc-800
-                    text-2xl
-                    font-semibold
-                '
-            >
+            <h2 className='
+                text-color-30 text-2xl font-semibold
+            '>
                 {header}
             </h2>
         </div>

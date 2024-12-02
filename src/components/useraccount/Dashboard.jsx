@@ -8,20 +8,18 @@ import MealHistory from '../../assets/mealHistory.png'
 export default function Dashboard() {
     return (
         <div className='
-            mt-6 mb-6
-            w-full max-w-3xl min-h-[90%]
+            py-12 w-full max-w-3xl 
             flex flex-col gap-8
         '>
 
             <h1 className='
-                text-5xl font-semibold
-                border-b-2 border-teal-800
-                pb-2
+                text-5xl font-semibold text-color-30
+                border-b-2 border-color-30 pb-2
             '>Dashboard</h1>
 
             <div className='
                 flex sm:flex-row flex-col flex-wrap
-                gap-y-6 sm:justify-between justify-center
+                gap-y-8 sm:justify-between justify-center 
             '>
 
                 <Card 

@@ -66,23 +66,22 @@ function CreateRegimenContent () {
 
 
     return (
-        
             <div className="
                 w-full max-w-3xl flex flex-col 
-                py-12  gap-12
+                py-12  gap-12 text-color-30
             ">
-                <h1 className="text-4xl font-semibold border-b-2 border-teal-800 pb-2">
-                    Create Program
+                <h1 className="text-4xl  font-semibold capitalize ">
+                    Create your workout
                 </h1>
 
-                <div className='flex flex-col gap-4'>
-                    <div className="flex flex-col gap-2">
-                        <label className="text-lg font-semibold">Program Name:</label>
+                <div className='flex flex-col gap-8'>
+                    <div className="flex flex-col gap-1">
+                        <label className="text-xl font-semibold">Program Name:</label>
                         <input
                             type="text"
                             value={programName}
                             onChange={(e) => setProgramName(e.target.value)}
-                            className="text-lg caret-teal-500 outline-none border-b-2 border-gray-300 focus:border-teal-500 transition-colors px-2"
+                            className="text-lg bg-color-60 caret-color-10-a outline-none border-b-2 border-color-30 focus:border-color-30 transition-colors px-2"
                             placeholder="Enter program name"
                         />
                     </div>
@@ -93,9 +92,9 @@ function CreateRegimenContent () {
                 <button
                     onClick={handleSubmit}
                     className="
-                        w-full border-2 border-teal-800
-                        text-teal-800 text-lg font-semibold
-                        hover:bg-teal-800 hover:text-white
+                        w-full border-2 border-color-30 bg-color-10-a
+                        text-color-30 text-lg font-semibold max-w-[300px] w-full
+                        hover:bg-color-30 hover:text-color-10-a
                         transition-colors px-4 py-2 rounded-md mx-auto
                     "
                 >

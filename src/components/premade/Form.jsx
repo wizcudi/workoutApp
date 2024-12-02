@@ -43,24 +43,14 @@ export default function Form({heading, buttonText, onSubmit}) {
         <form 
             onSubmit={handleSubmit}
             className='
-                min-h-96
-                max-w-96
-                w-full
-                
-                flex
-                flex-col
-                justify-center
-                p-10
-                gap-10
-                border-2
-                border-teal-700
+                min-h-96 max-w-96 w-full
+                flex flex-col justify-center
+                py-10 px-8 gap-10 border-2
+                bg-color-10-b border-color-30 
             '
         >
             <h2 className='
-                text-5xl
-                text-teal-700
-                font-bold
-                text-center
+                text-4xl font-bold text-center text-color-30 capitalize
             '>
                 {heading}
             </h2>
@@ -73,13 +63,8 @@ export default function Form({heading, buttonText, onSubmit}) {
 
             <input 
                 className='
-                    h-12
-                    rounded
-                    p-2
-                    border-2
-                    text-xl
-                    border-teal-700
-                    focus:border-blue-700
+                    h-12 rounded p-2 border-2 text-lg border-color-30
+                    focus:border-color-10-a
                     focus:outline-none
                 '
                 type='email' 
@@ -91,13 +76,8 @@ export default function Form({heading, buttonText, onSubmit}) {
             />
             <input 
                 className='
-                    h-12
-                    rounded
-                    p-2
-                    border-2
-                    text-xl
-                    border-teal-700
-                    focus:border-blue-700
+                    h-12 rounded p-2 border-2 text-lg border-color-30
+                    focus:border-color-10-a
                     focus:outline-none
                 '
                 type='password'
@@ -112,10 +92,11 @@ export default function Form({heading, buttonText, onSubmit}) {
             <Button 
                 type='submit'
                 btnText={buttonText}
-                btnBorder='border-2 border-teal-700'
-                hoverColor='hover:bg-teal-700'
-                hoverText='hover:text-white'
-                btnTextStyle='text-teal-700 font-bold text-xl uppercase'
+                bgColor='bg-color-10-a'
+                btnBorder='border-2 border-color-10-a'
+                hoverColor='hover:bg-color-30'
+                hoverText='hover:text-color-10-a'
+                btnTextStyle='text-color-30 font-bold text-lg uppercase'
             />
         </form>
     )

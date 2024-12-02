@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
     <WorkoutProvider>
       <div className="
-        h-screen flex flex-col
+        min-h-screen flex flex-col bg-color-60
       ">
     
         <Navbar />

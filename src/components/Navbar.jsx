@@ -9,7 +9,7 @@ export default function Navbar() {
 
     return (
         <nav className="
-            p-4 bg-teal-700 text-white text-lg
+            p-4 bg-color-30 text-color-60 text-lg font-semibold
         ">
             <div className="
                 max-w-4xl mx-auto 
@@ -27,7 +27,7 @@ export default function Navbar() {
                 <div>
                     { user && 
                         (
-                            <div className='flex gap-4 items-center'>
+                            <div className='flex gap-6 items-center'>
                                 <Link
                                     to="/dashboard"
                                 >

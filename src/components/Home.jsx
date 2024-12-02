@@ -4,25 +4,14 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
     return (
-        <div 
-            className='
-                max-w-3xl
-                flex
-                flex-col
-                justify-center
-                items-center
-                md:p-10
-                p-7
-                gap-6
-                rounded
-                
-            '
-        >
-            <h1
-                className='
-                    text-6xl
-                '
-            >
+        <div className='
+            max-w-3xl flex flex-col justify-center
+            items-center md:p-10 p-7 gap-6 rounded
+            text-color-30
+        '>
+            <h1 className='
+                text-6xl font-semibold
+            '>
                 Fit Tracker
             </h1>
             <p 
@@ -50,24 +39,24 @@ export default function Home() {
                 <Link to="/signup">
                     <Button 
                         btnText='Create an account'
-                        btnBorder='border-2 border-teal-700'
-                        hoverColor='hover:bg-white'
-                        hoverText='hover:text-teal-700'
-                        btnTextStyle='text-white font-bold text-xl uppercase'
-                        bgColor='bg-teal-700'
-                        activeColor='active:text-white active:bg-teal-600 active:border-none'
+                        btnBorder='border-2 border-color-30'
+                        hoverColor='hover:bg-color-60'
+                        hoverText='hover:text-color-30'
+                        btnTextStyle='text-color-60 font-bold text-xl uppercase'
+                        bgColor='bg-color-30'
+                        activeColor='active:text-color-60 active:bg-color-10-a active:border-none'
                     />
                 </Link>
 
                 <Link to="/signin">
                     <Button 
-                        btnText='Welcome Back'
-                        btnBorder='border-2 border-teal-700'
-                        hoverColor='hover:bg-white'
-                        hoverText='hover:text-teal-700'
-                        btnTextStyle='text-white font-bold text-xl uppercase'
-                        bgColor='bg-teal-700'
-                        activeColor='active:text-white active:bg-teal-600 active:border-none'
+                        btnText='Create an account'
+                        btnBorder='border-2 border-color-30'
+                        hoverColor='hover:bg-color-60'
+                        hoverText='hover:text-color-30'
+                        btnTextStyle='text-color-60 font-bold text-xl uppercase'
+                        bgColor='bg-color-30'
+                        activeColor='active:text-color-60 active:bg-color-10-a active:border-none'
                     />
                 </Link>
 

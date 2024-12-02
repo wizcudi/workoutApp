@@ -10,25 +10,21 @@ export default function CreateRegimenDay() {
 
     
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-2'>
             {/* Map through our days array to render each day */}
             {workoutData.days.map((day) => (
                 <div 
                     key={day.id}
-                    className='flex flex-col border-2 border-teal-600 rounded-b-lg'
+                    className='flex flex-col border-2  border-color-30  '
                 >
                     <div>
                         <div
                             onClick={() => toggleDay(day.id)}
                             className='
                                 flex justify-between items-center
-                                text-2xl font-semibold
-                                py-4 px-6 
-                                bg-teal-600
-                                text-white
-                                cursor-pointer
-                                hover:bg-teal-500
-                                transition-colors
+                                text-2xl text-color-60 font-semibold
+                                py-4 px-6 bg-color-30 cursor-pointer
+                                hover:bg-color-60 hover:text-color-30 transition-colors
                             '
                         >
                             <h2>Day {day.id}</h2>
@@ -50,16 +46,10 @@ export default function CreateRegimenDay() {
                     onClick={removeDay}
                     disabled={workoutData.days.length === 1}
                     className="
-                        flex justify-center items-center
-                        text-center
-                        border-2 border-teal-600
-                        text-gray-100 hover:text-teal-600
-                        text-xl
-                        bg-teal-600 hover:bg-teal-300
-                        p-1 
-                        rounded
-                        disabled:opacity-50
-                        disabled:cursor-not-allowed
+                        flex justify-center items-center text-center
+                        text-xl font-semibold text-color-60 hover:text-color-30
+                        border-2 border-color-30 bg-color-30 hover:bg-color-60
+                        px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed
                     "
                 >
                     Remove Day
@@ -68,14 +58,10 @@ export default function CreateRegimenDay() {
                 <button
                     onClick={addDay}
                     className="
-                        flex justify-center items-center
-                        text-center
-                        border-2 border-teal-600
-                        text-gray-100 hover:text-teal-600
-                        text-xl
-                        bg-teal-600 hover:bg-teal-300
-                        p-1 
-                        rounded
+                        flex justify-center items-center text-center
+                        text-xl font-semibold text-color-60 hover:text-color-30
+                        border-2 border-color-30 bg-color-30 hover:bg-color-60
+                        px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed
                     "
                 >
                     Add Day
