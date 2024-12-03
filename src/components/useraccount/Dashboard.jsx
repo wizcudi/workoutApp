@@ -9,7 +9,7 @@ export default function Dashboard() {
     return (
         <div className='
             py-12 w-full max-w-3xl 
-            flex flex-col gap-8
+            flex flex-col gap-8 
         '>
 
             <h1 className='

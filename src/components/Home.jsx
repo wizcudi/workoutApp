@@ -7,7 +7,7 @@ export default function Home() {
         <div className='
             max-w-3xl flex flex-col justify-center
             items-center md:p-10 p-7 gap-6 rounded
-            text-color-30
+            text-color-30 
         '>
             <h1 className='
                 text-6xl font-semibold
