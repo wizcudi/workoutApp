@@ -25,8 +25,8 @@ export default function WorkoutPrograms() {
 
     return (
         <div className='
-            h-full w-full max-w-2xl
-            flex flex-col gap-12 py-12 
+            w-full max-w-2xl
+            flex flex-col gap-8 py-12
             
         '>
             <h1 className="text-4xl font-semibold border-b-2 border-teal-800 pb-2">

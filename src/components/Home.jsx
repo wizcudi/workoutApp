@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 export default function Home() {
     return (
         <div className='
-            max-w-3xl flex flex-col justify-center
-            items-center md:p-10 p-7 gap-6 rounded
-            text-color-30 
+            max-w-3xl flex flex-col items-center 
+            gap-6 rounded text-color-30 py-12
+            
         '>
             <h1 className='
                 text-6xl font-semibold

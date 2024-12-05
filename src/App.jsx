@@ -24,8 +24,8 @@ function App() {
 
         {/* Main content area */}
         <div className="
-          grow flex justify-center px-6
-              
+          flex-1 flex justify-center px-8
+          
         ">
 
           <Routes>
