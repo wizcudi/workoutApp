@@ -40,6 +40,7 @@ export default function Form({heading, buttonText, onSubmit}) {
 
     
     return (
+        <div className='flex justify-center items-center'>
         <form 
             onSubmit={handleSubmit}
             className='
@@ -99,6 +100,7 @@ export default function Form({heading, buttonText, onSubmit}) {
                 btnTextStyle='text-color-30 font-bold text-lg uppercase'
             />
         </form>
+        </div>
     )
 }
 
