@@ -14,14 +14,14 @@ export default function DayCard({workout, rep, set, weight, isLast}) {
             {/* Main Workout Information Section */}
             <div className='flex flex-wrap pt-5 px-4 gap-4 items-center justify-between '>
                 {/* Workout Details Group */}
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2 text-color-30'>
                     {/* Workout Name */}
-                    <h3 className='capitalize text-2xl font-semibold text-zinc-800'>
+                    <h3 className='capitalize text-2xl font-semibold '>
                         {workout}
                     </h3>
 
                     {/* Workout Specifications */}
-                    <div className='flex flex-col gap-1 text-zinc-600'>
+                    <div className='flex flex-col gap-1'>
                         {/* Only show if set and rep values exist */}
                         {set && rep && (
                             <p className='text-lg'>
@@ -47,9 +47,13 @@ export default function DayCard({workout, rep, set, weight, isLast}) {
                         px-5 py-2
                         rounded
                         transition-all duration-300
+
+                        font-semibold
+                         
+
                         ${completed 
-                            ? 'bg-teal-500 text-white' 
-                            : 'bg-white text-zinc-800 hover:bg-zinc-100'
+                            ? 'bg-color-10-a text-color-30' 
+                            : 'bg-color-30 text-color-10-a border border-color-10-a'
                         }
                     `}
                 >

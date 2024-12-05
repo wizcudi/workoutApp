@@ -14,7 +14,11 @@ export default function Day({day, workouts}) {
         <div>
             <h2 
                 onClick={handleDayClick}
-                className="text-4xl font-semibold mx-auto text-center py-4 bg-gray-300 cursor-pointer"
+                className="
+                    text-4xl text-color-10-b font-semibold mx-auto 
+                    text-center py-4 cursor-pointer
+                    bg-color-30 hover:bg-color-30/75
+                "
             >
                 {day}
             </h2>

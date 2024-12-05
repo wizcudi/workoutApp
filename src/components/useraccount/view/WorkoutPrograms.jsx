@@ -27,9 +27,9 @@ export default function WorkoutPrograms() {
         <div className='
             w-full max-w-2xl
             flex flex-col gap-8 py-12
-            
+            text-color-30
         '>
-            <h1 className="text-4xl font-semibold border-b-2 border-teal-800 pb-2">
+            <h1 className="text-4xl font-semibold border-b-2 border-color-30 pb-2">
                 View Program
             </h1>
 
@@ -41,7 +41,7 @@ export default function WorkoutPrograms() {
                         <ProgramCard 
                             key={program.id}
                             header={program.name}
-                            cardBG="bg-teal-500"
+                            cardBG="bg-color-30"
                             program={program}
                         />
                     ))}
