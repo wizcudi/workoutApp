@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Button from '../../../premade/Button';
-import { 
-    normalizeText,
+import {
     processSearchResults 
 } from './utils/searchLogic';
+import { useMeal } from '../../../MealContext';
 
 const USDA_API_KEY = import.meta.env.VITE_USDA_API_KEY;
 const USDA_API_ENDPOINT = 'https://api.nal.usda.gov/fdc/v1';
@@ -15,6 +15,7 @@ export default function Search() {
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { saveMeal, isLoading: isSaving } = useMeal();
 
     const searchUSDA = async (query) => {
         try {
@@ -102,6 +103,22 @@ export default function Search() {
         }
     };
 
+    const handleSaveMeal = async (food) => {
+        if (!weight) {
+            setError('Please enter a weight before saving');
+            return;
+        }
+        
+        const adjustedNutrients = calculateAdjustedNutrients(food.nutrients);
+        const mealData = {
+            name: food.name,
+            brandOwner: food.brandOwner,
+            nutrients: adjustedNutrients
+        };
+        
+        await saveMeal(mealData, weight, weightUnit);
+    };
+
     return (
         <div>
             <form onSubmit={handleSubmit} className='space-y-4'>
@@ -163,7 +180,7 @@ export default function Search() {
                 <div className="text-red-500 text-sm mt-2">{error}</div>
             )}
 
-            {searchResults.length > 0 && (
+            {/* {searchResults.length > 0 && (
                 <div className="mt-4 space-y-2">
                     {weight && (
                         <p className="text-sm text-color-30">
@@ -177,6 +194,47 @@ export default function Search() {
                         >
                             <h3 className="font-semibold">{food.name}</h3>
                             <p className="text-sm text-color-30/70">{food.brandOwner}</p>
+                            <div className="mt-2 text-sm grid grid-cols-3 gap-2">
+                                {Object.entries(calculateAdjustedNutrients(food.nutrients)).map(([nutrient, value]) => (
+                                    <span key={nutrient}>
+                                        {nutrient.charAt(0).toUpperCase() + nutrient.slice(1)}: 
+                                        {value}{nutrient === 'calories' ? '' : 'g'}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )} */}
+
+            {searchResults.length > 0 && (
+                <div className="mt-4 space-y-2">
+                    {weight && (
+                        <p className="text-sm text-color-30">
+                            Showing nutrition for {weight} {weightUnit}
+                        </p>
+                    )}
+                    {searchResults.map(food => (
+                        <div 
+                            key={food.id}
+                            className="p-3 bg-color-60/10 rounded-md hover:bg-color-60/20"
+                        >
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <h3 className="font-semibold">{food.name}</h3>
+                                    <p className="text-sm text-color-30/70">{food.brandOwner}</p>
+                                </div>
+                                <div>
+                                    <Button
+                                        onClick={() => handleSaveMeal(food)}
+                                        disabled={isSaving}
+                                        btnText={isSaving ? "Saving..." : "Save"}
+                                        bgColor="bg-color-10-a"
+                                        hoverColor="hover:bg-color-30"
+                                        btnTextStyle="text-sm font-semibold text-color-30"
+                                    />
+                                </div>
+                            </div>
                             <div className="mt-2 text-sm grid grid-cols-3 gap-2">
                                 {Object.entries(calculateAdjustedNutrients(food.nutrients)).map(([nutrient, value]) => (
                                     <span key={nutrient}>

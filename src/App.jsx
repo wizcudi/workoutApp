@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { WorkoutProvider } from './components/WorkoutContext';
+import { MealProvider } from './components/MealContext';
+
 
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -16,6 +18,7 @@ function App() {
   return (
     <BrowserRouter>
     <WorkoutProvider>
+    <MealProvider>
       <div className="
         min-h-screen flex flex-col bg-color-60
       ">
@@ -74,6 +77,7 @@ function App() {
         </div>
             
       </div>
+      </MealProvider>
       </WorkoutProvider>
     </BrowserRouter>
   )
