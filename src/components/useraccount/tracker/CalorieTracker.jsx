@@ -1,9 +1,10 @@
 import React from 'react'
+import Card from './trackercomponents/Card'
 
 export default function CalorieTracker() {
     return (
-        <div>
-            MEAL MEAL MEAL
+        <div className=' w-full py-14'>
+            <Card />
         </div>
     )
 }
