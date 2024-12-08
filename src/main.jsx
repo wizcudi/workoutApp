@@ -5,7 +5,7 @@ import './index.css'
 import './firebase.js'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <StrictMode >
     <App />
   </StrictMode>,
 )

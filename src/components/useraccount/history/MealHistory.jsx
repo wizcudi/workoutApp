@@ -56,12 +56,12 @@ export default function MealHistory() {
             {isLoading && <div className="text-center">Loading meals...</div>}
             {error && <div className="text-red-500">{error}</div>}
 
-            <div className="space-y-4">
+            <div className="space-y-4 ">
                 {filteredMeals.map(meal => (
-                    <div key={meal.id} className="bg-color-60/10 rounded-md p-4">
+                    <div key={meal.id} className="bg-color-10-b rounded-md p-4 space-y-6">
                         <div className="flex justify-between items-start mb-2">
                             <div>
-                                <h3 className="font-semibold">{meal.name}</h3>
+                                <h3 className="font-semibold text-lg">{meal.name}</h3>
                                 <p className="text-sm text-color-30/70">
                                     {meal.weight} {meal.weightUnit} • {new Date(meal.timestamp).toLocaleDateString()}
                                 </p>

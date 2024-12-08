@@ -6,7 +6,7 @@ export default function Button({
     bgColor, 
     btnBorder,
     btnTextStyle,
-    hoverColor= "hover:bg-stone-300",
+    hoverColor= "hover:bg-color-30",
     hoverText= "hover:text-white", 
     activeColor,
     type="button",

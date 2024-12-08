@@ -180,33 +180,7 @@ export default function Search() {
                 <div className="text-red-500 text-sm mt-2">{error}</div>
             )}
 
-            {/* {searchResults.length > 0 && (
-                <div className="mt-4 space-y-2">
-                    {weight && (
-                        <p className="text-sm text-color-30">
-                            Showing nutrition for {weight} {weightUnit}
-                        </p>
-                    )}
-                    {searchResults.map(food => (
-                        <div 
-                            key={food.id}
-                            className="p-3 bg-color-60/10 rounded-md hover:bg-color-60/20 cursor-pointer"
-                        >
-                            <h3 className="font-semibold">{food.name}</h3>
-                            <p className="text-sm text-color-30/70">{food.brandOwner}</p>
-                            <div className="mt-2 text-sm grid grid-cols-3 gap-2">
-                                {Object.entries(calculateAdjustedNutrients(food.nutrients)).map(([nutrient, value]) => (
-                                    <span key={nutrient}>
-                                        {nutrient.charAt(0).toUpperCase() + nutrient.slice(1)}: 
-                                        {value}{nutrient === 'calories' ? '' : 'g'}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )} */}
-
+            
             {searchResults.length > 0 && (
                 <div className="mt-4 space-y-2">
                     {weight && (
