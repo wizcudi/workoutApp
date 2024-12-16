@@ -23,7 +23,7 @@ export default function ProgramCard({header, cardBG, program}) {
                     {program.weeklyProgram.map((week) => (
                         <div key={week.weekNumber} className='flex flex-col gap-4'>
                             <h3 className='text-2xl font-semibold text-color-30'>
-                                {week.weekNumber === 0 ? 'Week 1' : `Week ${week.weekNumber++}`}
+                                {week.weekNumber === 0 ? 'Base Week' : `Week ${week.weekNumber}`}
                             </h3>
                             <Days days={week.days} />
                         </div>
