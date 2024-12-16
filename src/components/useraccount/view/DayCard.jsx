@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
+import { useWorkout } from '../../context/WorkoutContext';
 
-export default function DayCard({workout, rep, set, weight, isLast}) {
+export default function DayCard({workout, rep, set, weight, isLast, workoutId}) {
 
     const [completed, setCompleted] = useState(false);
+
+    const [selectedWeek, setSelectedWeek] = useState(0);
+    const { progressiveOverload } = useWorkout();
 
     const handleComplete = () => {
         setCompleted(!completed);
     };
+
+    const workoutProgression = progressiveOverload.enabled && 
+        progressiveOverload.progressions[workoutId];
     
 
     return (
@@ -31,11 +38,33 @@ export default function DayCard({workout, rep, set, weight, isLast}) {
                         )}
                         
                         {/* Weight information */}
-                        {weight && (
+                        {/* {weight && (
                             <p className='text-lg'>
                                 Weight: {weight}
                             </p>
+                        )} */}
+
+                        {/* Progressive Weight Display */}
+                        {workoutProgression ? (
+                            <div className='flex flex-col gap-2'>
+                                <select 
+                                    value={selectedWeek}
+                                    onChange={(e) => setSelectedWeek(parseInt(e.target.value))}
+                                    className="p-1 border border-color-30 rounded"
+                                >
+                                    <option value={0}>Base Weight: {weight}lbs</option>
+                                    {Object.entries(workoutProgression.weeklyWeights).map(([week, weight]) => (
+                                        <option key={week} value={week}>
+                                            Week {week}: {weight}lbs
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        ) : (
+                            weight && <p className='text-lg'>Weight: {weight}lbs</p>
                         )}
+
+
                     </div>
                 </div>
 
@@ -66,5 +95,5 @@ export default function DayCard({workout, rep, set, weight, isLast}) {
             {/* <div className='border border-zinc-800 w-full mt-5'></div> */}
 
         </div>
-    )
+    );
 }

@@ -1,43 +1,36 @@
-import { useWorkout } from '../../WorkoutContext';
+
+import { useWorkout } from '../../context/WorkoutContext';
 import WorkoutCard from '../create/WorkoutCard' 
 
 export default function CreateRegimenCard({ dayId }) {
-    // Get our state and functions from context
-    const { workoutData, addWorkout, removeWorkout } = useWorkout();
+    const { days, workouts, addWorkout, removeWorkout } = useWorkout();
     
     
-    // Find the current day's workouts
-    const day = workoutData.days.find(d => d.id === dayId);
-    
+    const day = days.byId[dayId];
     
     return (
-        <div className='
-            flex flex-col gap-6 py-10 w-full bg-color-10-b 
-        '>   
+        <div className='flex flex-col gap-6 py-10 w-full bg-color-10-b '>   
             {/* Map through the day's workouts */}
-            {day.workouts.map((workout) => (
+            {day.workoutIds.map((workoutId) => (
                 <WorkoutCard 
-                    key={workout.id}
+                    key={workoutId}
                     dayId={dayId}
-                    workoutId={workout.id}
+                    workoutId={workoutId}
                 />
-
-                
             ))}
 
             {/* Add & Remove Workouts btn */}
             <div className='flex flex-row gap-6 mx-auto'>
                 <button
-                    onClick={() => removeWorkout(dayId)}
-                    disabled={day.workouts.length === 1}
-                    className={`
-                        flex justify-center items-center text-center
-                        border-2 border-color-30 text-2xl h-10 w-10 pb-1 rounded-full
-                        ${day.workouts.length === 1 
+                    onClick={() => removeWorkout(dayId, day.workoutIds[day.workoutIds.length - 1])}
+                    disabled={day.workoutIds.length === 1}
+                    className={`flex justify-center items-center text-center border-2 border-color-30 
+                        text-2xl h-10 w-10 pb-1 rounded-full 
+                        ${day.workoutIds.length === 1 
                             ? 'opacity-50 cursor-not-allowed bg-gray-400 border-gray-400 text-white'
                             : 'text-color-30 bg-color-10-a hover:bg-color-10-a/50'
-                        }
-                    `}
+                        }`
+                    }
                 >
                     -
                 </button>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { WorkoutProvider } from './components/WorkoutContext';
-import { MealProvider } from './components/MealContext';
+import { WorkoutProvider } from './components/context/WorkoutContext';
+import { MealProvider } from './components/context/MealContext';
 
 
 import Navbar from './components/Navbar'

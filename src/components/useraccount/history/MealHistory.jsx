@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from 'react'
-import { useMeal } from '../../MealContext'
+import { useMeal } from '../../context/MealContext'
 
 export default function MealHistory() {
 

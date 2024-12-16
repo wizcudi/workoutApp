@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { db, auth } from '../../firebase';
 
 const MealContext = createContext();
 

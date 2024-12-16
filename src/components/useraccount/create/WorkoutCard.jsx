@@ -1,21 +1,15 @@
-import { useWorkout } from '../../WorkoutContext';
+import { useWorkout } from '../../context/WorkoutContext';
 import WorkoutInput from './Inputs/WorkoutInput'
 
 export default function WorkoutCard({ dayId, workoutId }) {
 
-    // Get our state and update function from context
-    const { workoutData, updateWorkout } = useWorkout();
+    const { workouts, updateWorkout } = useWorkout();
     
-    // Find the current workout data
-    const workout = workoutData.days
-        .find(d => d.id === dayId)
-        .workouts.find(w => w.id === workoutId);
-
-
+   
+    const workout = workouts.byId[workoutId];
+    
     return (
-        <div className="
-            flex flex-col gap-6
-        ">
+        <div className=" flex flex-col gap-6">
             <div className='flex flex-col gap-6 px-8'>
                 <WorkoutInput 
                     title="Workout Name"

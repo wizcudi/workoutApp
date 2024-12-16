@@ -3,7 +3,7 @@ import Button from '../../../premade/Button';
 import {
     processSearchResults 
 } from './utils/searchLogic';
-import { useMeal } from '../../../MealContext';
+import { useMeal } from '../../../context/MealContext';
 
 const USDA_API_KEY = import.meta.env.VITE_USDA_API_KEY;
 const USDA_API_ENDPOINT = 'https://api.nal.usda.gov/fdc/v1';
