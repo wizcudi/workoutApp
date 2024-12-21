@@ -6,7 +6,7 @@ export default function Days({ days }) {
     
 
     return (
-        <div className='flex flex-col gap-4 px-4 py-6'>
+        <div className='flex flex-col gap-4 '>
             {days.map((day) => (
                 <Day 
                     key={day.id}

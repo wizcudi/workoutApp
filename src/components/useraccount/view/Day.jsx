@@ -11,17 +11,21 @@ export default function Day({day, workouts}) {
     
 
     return (
-        <div>
-            <h2 
+        <div className=''>
+            <div
                 onClick={handleDayClick}
                 className="
-                    text-4xl text-color-10-b font-semibold mx-auto 
-                    text-center py-4 cursor-pointer
+                    cursor-pointer px-2 py-2 
                     bg-color-30 hover:bg-color-30/75
                 "
             >
-                {day}
-            </h2>
+                <h2 
+                    className='text-2xl text-color-10-b font-semibold '
+                >
+                    {day}
+                </h2>
+            </div>
+            
 
             <div className={`${isExpanded ? 'flex' : 'hidden'} flex-col`}>
                 {workouts.map((workout, index) => (
