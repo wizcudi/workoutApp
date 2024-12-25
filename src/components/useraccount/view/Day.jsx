@@ -11,11 +11,11 @@ export default function Day({day, workouts}) {
     
 
     return (
-        <div className=''>
+        <div className=' rounded '>
             <div
                 onClick={handleDayClick}
                 className="
-                    cursor-pointer px-2 py-2 
+                    cursor-pointer px-2 py-2 rounded
                     bg-color-30 hover:bg-color-30/75
                 "
             >
@@ -27,7 +27,7 @@ export default function Day({day, workouts}) {
             </div>
             
 
-            <div className={`${isExpanded ? 'flex' : 'hidden'} flex-col`}>
+            <div className={`${isExpanded ? 'flex' : 'hidden'} flex-col `}>
                 {workouts.map((workout, index) => (
                     <DayCard 
                         key={workout.id}

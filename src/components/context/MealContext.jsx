@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 
 const MealContext = createContext();
@@ -30,6 +30,28 @@ export function MealProvider({ children }) {
         } catch (error) {
             console.error("Error saving meal:", error);
             setError("Failed to save meal");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const deleteMeal = async (mealId) => {
+        if (!auth.currentUser) {
+            setError("Please log in to delete meals");
+            return;
+        }
+
+        try {
+            setIsLoading(true);
+            const userEmail = auth.currentUser.email;
+            const mealRef = doc(db, userEmail, 'mealHistory', 'meals', mealId);
+            await deleteDoc(mealRef);
+            
+            // Update local state to remove the deleted meal
+            setMealHistory(prevMeals => prevMeals.filter(meal => meal.id !== mealId));
+        } catch (error) {
+            console.error("Error deleting meal:", error);
+            setError("Failed to delete meal");
         } finally {
             setIsLoading(false);
         }
@@ -68,6 +90,7 @@ export function MealProvider({ children }) {
             isLoading,
             error,
             saveMeal,
+            deleteMeal,
             fetchMealHistory
         }}>
             {children}

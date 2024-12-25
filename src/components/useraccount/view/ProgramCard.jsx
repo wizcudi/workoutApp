@@ -26,10 +26,10 @@ export default function ProgramCard({header, cardBG, program}) {
             </div>
 
             {isVisible && program.weeklyProgram && (
-                <div className='flex flex-col bg-color-10-b gap-8 p-4'>
+                <div className='flex flex-col bg-color-10-b gap-6 p-6'>
                     {program.weeklyProgram.map((week) => (
-                        <div  key={week.weekNumber} className='flex flex-col bg-color-60  border border-color-30 rounded-md'>
-                            <div className='flex justify-between items-center  p-2'>
+                        <div  key={week.weekNumber} className='flex flex-col bg-color-60 p-4 gap-4 border-2 border-color-30 rounded-lg'>
+                            <div className='flex justify-between items-center  '>
                                 <h3 className='text-2xl font-semibold text-color-30'>
                                     {week.weekNumber === 0 ? 'Base Week' : `Week ${week.weekNumber}`}
                                 </h3>

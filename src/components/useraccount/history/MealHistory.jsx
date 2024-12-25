@@ -1,5 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import { useMeal } from '../../context/MealContext'
+import MealDayHistory from './MealDayHistory';
 
 export default function MealHistory() {
 
@@ -35,7 +36,28 @@ export default function MealHistory() {
         );
     };
 
+    const groupMealsByDate = (meals) => {
+        const groups = {};
+        
+        meals.forEach(meal => {
+            const date = new Date(meal.timestamp).toDateString();
+            if (!groups[date]) {
+                groups[date] = [];
+            }
+            groups[date].push(meal);
+        });
+        
+        // Convert to array and sort by date (most recent first)
+        return Object.entries(groups)
+            .map(([date, meals]) => ({
+                date,
+                meals
+            }))
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
+    };
+
     const filteredMeals = filterMeals();
+    const groupedMeals = groupMealsByDate(filteredMeals);
 
     return (
         <div className="w-full max-w-3xl py-12 space-y-8">
@@ -56,7 +78,7 @@ export default function MealHistory() {
             {isLoading && <div className="text-center">Loading meals...</div>}
             {error && <div className="text-red-500">{error}</div>}
 
-            <div className="space-y-4 ">
+            {/* <div className="space-y-4 ">
                 {filteredMeals.map(meal => (
                     <div key={meal.id} className="bg-color-10-b rounded-md p-4 space-y-6">
                         <div className="flex justify-between items-start mb-2">
@@ -83,7 +105,25 @@ export default function MealHistory() {
                         No meals found for this time period
                     </div>
                 )}
+            </div> */}
+
+            <div className="space-y-4">
+                {groupedMeals.map(({ date, meals }) => (
+                    <MealDayHistory 
+                        key={date} 
+                        date={date} 
+                        meals={meals} 
+                    />
+                ))}
+                
+                {groupedMeals.length === 0 && !isLoading && (
+                    <div className="text-center text-color-30/70">
+                        No meals found for this time period
+                    </div>
+                )}
             </div>
+
+
         </div>
     )
 }

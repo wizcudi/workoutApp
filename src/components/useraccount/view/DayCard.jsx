@@ -17,11 +17,12 @@ export default function DayCard({workout, rep, set, weight, isLast, workoutId}) 
     
 
     return (
-        <div className={`flex flex-col ${!isLast ? 'border-b border-zinc-800' : ''}`}>
+        <div className={`flex flex-col ${!isLast ? 'border-b border-color-30' : ''}`}>
             {/* Main Workout Information Section */}
-            <div className='flex flex-wrap pt-5 px-4 gap-4 items-center justify-between '>
+            <div className='flex flex-wrap max-400:flex-col max-400:items-start  pt-5 px-4 gap-6  justify-between '>
                 {/* Workout Details Group */}
                 <div className='flex flex-col gap-2 text-color-30'>
+                    
                     {/* Workout Name */}
                     <h3 className='capitalize text-2xl font-semibold '>
                         {workout}
@@ -37,12 +38,6 @@ export default function DayCard({workout, rep, set, weight, isLast, workoutId}) 
                             </p>
                         )}
                         
-                        {/* Weight information */}
-                        {/* {weight && (
-                            <p className='text-lg'>
-                                Weight: {weight}
-                            </p>
-                        )} */}
 
                         {/* Progressive Weight Display */}
                         {workoutProgression ? (
@@ -69,6 +64,7 @@ export default function DayCard({workout, rep, set, weight, isLast, workoutId}) 
                 </div>
 
                 {/* Completion Button */}
+                <div>
                 <button 
                     onClick={handleComplete}
                     className={`
@@ -76,7 +72,7 @@ export default function DayCard({workout, rep, set, weight, isLast, workoutId}) 
                         px-5 py-2
                         rounded
                         transition-all duration-300
-
+                        max-400:w-full
                         font-semibold
                          
 
@@ -88,6 +84,7 @@ export default function DayCard({workout, rep, set, weight, isLast, workoutId}) 
                 >
                     {completed ? 'Completed' : 'Start'}
                 </button>
+                </div>
 
             </div>
             {/* Bottom Padding */}
