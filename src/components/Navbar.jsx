@@ -17,28 +17,38 @@ export default function Navbar() {
             ">
                 <Link 
                     to="/" 
-                    className="
-                        
-                    "
                 >
                     Home
                 </Link>
+                <div className='flex items-center space-x-6'>
+                    <Link
+                        to="/dashboard"
+                    >
+                        Dashboard
+                    </Link>
+                    {/* <Link
+                        to="/signin"
+                    >
+                        Sign In
+                    </Link> */}
 
-                <div>
                     { user && 
                         (
                             <div className='flex gap-6 items-center'>
-                                <Link
+                                {/* <Link
                                     to="/dashboard"
                                 >
                                     Dashboard
-                                </Link>
+                                </Link> */}
 
                                 <SignOut />
                             </div>
                         ) 
                     }
+
                 </div>
+
+                
                 
             </div>
         </nav>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../../premade/Button';
+import AdminBtn from '../../../premade/AdminBtn';
 import {
     processSearchResults 
 } from './utils/searchLogic';
@@ -199,13 +200,10 @@ export default function Search() {
                                     <p className="text-sm text-color-30/70">{food.brandOwner}</p>
                                 </div>
                                 <div>
-                                    <Button
+                                    <AdminBtn
                                         onClick={() => handleSaveMeal(food)}
                                         disabled={isSaving}
                                         btnText={isSaving ? "Saving..." : "Save"}
-                                        bgColor="bg-color-10-a"
-                                        hoverColor="hover:bg-color-30"
-                                        btnTextStyle="text-sm font-semibold text-color-30"
                                     />
                                 </div>
                             </div>

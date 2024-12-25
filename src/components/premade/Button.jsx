@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Button({
+    type="button",
     onClick,
     btnText, 
     bgColor, 
@@ -9,7 +10,6 @@ export default function Button({
     hoverColor= "hover:bg-color-30",
     hoverText= "hover:text-white", 
     activeColor,
-    type="button",
 }) {
     return (
         <button

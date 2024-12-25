@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CreateRegimenDay from './CreateRegimenDay'
+import AdminBtn from '../../premade/AdminBtn';
 import ProgressiveOverload from './presets/progressive/ProgressiveOverload';
 import { useWorkout } from '../../context/WorkoutContext';
 
@@ -57,8 +58,12 @@ function CreateRegimenContent () {
                     {error && <div className="text-red-500 mt-2">{error}</div>}
                     <CreateRegimenDay />
                 </div>
-                
-                <button
+                <AdminBtn
+                    onClick={handleSubmit}
+                    disabled={isLoading}
+                    btnText={isLoading ? 'Saving...' : 'Create Workout'}
+                />
+                {/* <button
                     onClick={handleSubmit}
                     disabled={isLoading}
                     className="
@@ -70,7 +75,7 @@ function CreateRegimenContent () {
                     "
                 >
                     {isLoading ? 'Saving...' : 'Create Workout'}
-                </button>
+                </button> */}
 
             </div>
         
