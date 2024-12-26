@@ -5,20 +5,15 @@ import { Link } from 'react-router-dom'
 export default function Home() {
     return (
         <div className='
-            max-w-3xl flex flex-col items-center 
-            py-12 gap-6 rounded text-color-30
+            max-w-xl flex flex-col items-center 
+            py-16 gap-8 rounded text-color-30
         '>
             <h1 className='
                 text-6xl font-semibold
             '>
                 Fit Tracker
             </h1>
-            <p 
-                className='
-                    text-xl
-                    text-center
-                '
-            >
+            <p className='text-xl md:text-2xl text-center '>
                 No more notes app or pocket books. 
                 Create your custom workouts and track your progress. 
                 While storing it all in the cloud.
