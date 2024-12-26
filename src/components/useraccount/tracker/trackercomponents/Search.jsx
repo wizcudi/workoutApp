@@ -192,7 +192,7 @@ export default function Search() {
                     {searchResults.map(food => (
                         <div 
                             key={food.id}
-                            className="p-3 bg-color-60/10 rounded-md hover:bg-color-60/20"
+                            className="space-y-3 p-3 bg-color-60/40 rounded-md hover:bg-color-60"
                         >
                             <div className="flex justify-between items-start">
                                 <div>
@@ -207,7 +207,7 @@ export default function Search() {
                                     />
                                 </div>
                             </div>
-                            <div className="mt-2 text-sm grid grid-cols-3 gap-2">
+                            <div className=" text-sm grid grid-cols-3 max-500:grid-cols-2 gap-2">
                                 {Object.entries(calculateAdjustedNutrients(food.nutrients)).map(([nutrient, value]) => (
                                     <span key={nutrient}>
                                         {nutrient.charAt(0).toUpperCase() + nutrient.slice(1)}: 

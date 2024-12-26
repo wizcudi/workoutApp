@@ -37,14 +37,21 @@ function CreateRegimenContent () {
 
 
     return (
-            <div className=" w-full max-w-3xl flex flex-col py-12  gap-12 text-color-30">
+            <div className=" w-full max-w-3xl space-y-8 py-12 text-color-30">
                 <h1 className="text-4xl text-center font-bold capitalize ">
                     Create your workout
                 </h1>
 
-                <ProgressiveOverload />
+                <div className='space-y-2'>
+                    <AdminBtn
+                        onClick={handleSubmit}
+                        disabled={isLoading}
+                        btnText={isLoading ? 'Saving...' : 'Create Workout'}
+                    />
+                    <ProgressiveOverload />
+                </div>
 
-                <div className='flex flex-col gap-8 border-2 border-color-30 p-6'>
+                <div className='space-y-4 '>
                     <div className="flex flex-col gap-1">
                         <label className="text-xl font-semibold">Program Name:</label>
                         <input
@@ -58,24 +65,7 @@ function CreateRegimenContent () {
                     {error && <div className="text-red-500 mt-2">{error}</div>}
                     <CreateRegimenDay />
                 </div>
-                <AdminBtn
-                    onClick={handleSubmit}
-                    disabled={isLoading}
-                    btnText={isLoading ? 'Saving...' : 'Create Workout'}
-                />
-                {/* <button
-                    onClick={handleSubmit}
-                    disabled={isLoading}
-                    className="
-                        w-full border-2 border-color-30 bg-color-30
-                        text-color-10-b text-lg font-semibold max-w-[300px] w-full
-                        hover:bg-color-10-a hover:text-color-30
-                        transition-colors px-4 py-2 rounded-md mx-auto
-                        disabled:opacity-50 disabled:cursor-not-allowed
-                    "
-                >
-                    {isLoading ? 'Saving...' : 'Create Workout'}
-                </button> */}
+                
 
             </div>
         

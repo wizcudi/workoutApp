@@ -26,25 +26,12 @@ export default function Navbar() {
                     >
                         Dashboard
                     </Link>
-                    {/* <Link
-                        to="/signin"
-                    >
-                        Sign In
-                    </Link> */}
 
-                    { user && 
-                        (
-                            <div className='flex gap-6 items-center'>
-                                {/* <Link
-                                    to="/dashboard"
-                                >
-                                    Dashboard
-                                </Link> */}
-
-                                <SignOut />
-                            </div>
-                        ) 
-                    }
+                    { user && (
+                        <div className='flex gap-6 items-center'>
+                            <SignOut />
+                        </div>
+                    )}
 
                 </div>
 
