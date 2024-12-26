@@ -41,20 +41,7 @@ function App() {
             <Route path="/create_regimen" element={<CreateRegimen />} />
             <Route path="/calorie_tracker" element={<CalorieTracker />} />
 
-            {/* <Route path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            /> */}
-            {/* <Route path="/create_regimen" 
-              element={
-                <ProtectedRoute>
-                  <CreateRegimen />
-                </ProtectedRoute>
-              } 
-            /> */}
+            
             <Route path="/workout_programs" 
               element={
                 <ProtectedRoute>
@@ -69,13 +56,7 @@ function App() {
                 </ProtectedRoute>
               } 
             />
-            {/* <Route path="/calorie_tracker" 
-              element={
-                <ProtectedRoute>
-                  <CalorieTracker />
-                </ProtectedRoute>
-              } 
-            /> */}
+            
             
           </Routes>
 

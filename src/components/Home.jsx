@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 export default function Home() {
     return (
         <div className='
-            max-w-3xl flex flex-col items-center justify-center
-            gap-6 rounded text-color-30 
+            max-w-3xl flex flex-col items-center 
+            py-12 gap-6 rounded text-color-30
         '>
             <h1 className='
                 text-6xl font-semibold
@@ -15,7 +15,7 @@ export default function Home() {
             </h1>
             <p 
                 className='
-                    text-2xl
+                    text-xl
                     text-center
                 '
             >
@@ -39,7 +39,7 @@ export default function Home() {
                     <Button 
                         btnText='Create an account'
                         btnBorder='border-2 border-color-30'
-                        hoverColor='hover:bg-color-60'
+                        hoverColor='hover:bg-color-10-a'
                         hoverText='hover:text-color-30'
                         btnTextStyle='text-color-60 font-bold text-xl uppercase'
                         bgColor='bg-color-30'
@@ -51,7 +51,7 @@ export default function Home() {
                     <Button 
                         btnText='Welcome Back'
                         btnBorder='border-2 border-color-30'
-                        hoverColor='hover:bg-color-60'
+                        hoverColor='hover:bg-color-10-a'
                         hoverText='hover:text-color-30'
                         btnTextStyle='text-color-60 font-bold text-xl uppercase'
                         bgColor='bg-color-30'
